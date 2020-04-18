@@ -9,3 +9,10 @@ def cutTxt(line):
             cutSent += temp + ' '
     return cutSent.strip()
 
+if __name__ == '__main__':
+    df = pd.read_csv('Information.csv')
+    f = open('cut.txt','w')
+    for line in df:
+        seg_line = cutTxt(line)
+        f.writelines(seg_line + '\n')
+    f.close()
