@@ -12,7 +12,11 @@ def cutTxt(line):
 
 if __name__ == '__main__':
     df = pd.read_csv('Information.csv')
-    with open('cut.txt','w',encoding='UTF-8') as f:
-        for line in df['content']:
-            seg_line = cutTxt(line)
-            f.writelines(seg_line+ '\n')
+    with open('cut.csv','w',encoding='UTF-8') as f:
+        writer = csv.writer(f,delimiter = ',')
+        writer.writerow(['content','estimate'])
+        seg_line = ['','']
+        for line in df.values:
+            seg_line[0] = cutTxt(line[0])
+            seg_line[1] = str(line[1])
+            writer.writerow(seg_line)
