@@ -6,7 +6,7 @@ def cutTxt(line):
     cutList = jieba.cut(line,cut_all = False)
     cutSent = ""
     for temp in cutList:
-        if temp != '\t':
+        if temp != '\t'and temp != '【' and temp != '】':
             cutSent += temp + ' '
     return cutSent.strip()
 
